@@ -1,7 +1,7 @@
 This is something for university course I am taking, not interesting for anyone outside. Sorry.
 
-Install
-=======
+Install & run
+=============
 
 Move to directory where you keep your sources (domtree.c,...) and enter commands
 
