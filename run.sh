@@ -16,7 +16,8 @@ for t in tests/* ; do
 	if [ -d "$t" ]; then
 		echo "-- Starting test $(basename $t) --"
 	
-		gcc -std=c99 -Wall -Wextra -Werror domtree.h domtree.c html.h html.c $t/main.c -o hw03
+		cat $t/main.c > main.c
+		gcc -std=c99 -Wall -Wextra -Werror domtree.h domtree.c html.h html.c main.c -o hw03
 		./hw03 < $t/input.html > output.html
 		DIFF=$(diff $t/exp_output.html output.html)
 		if [ "$DIFF" == "" ]; then
@@ -30,3 +31,4 @@ done
 
 echo "--- Whole test suit ended. $NOT_PASSED failed. ---"
 rm output.html
+rm main.c
