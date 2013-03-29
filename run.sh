@@ -22,7 +22,8 @@ for t in tests/* ; do
 		if [ "$DIFF" == "" ]; then
 			echo "Test passed"
 		else
-			echo "Test $(basename $t) failed. Try $ diff $t/exp_output.html output.html"
+			echo "Test $(basename $t) failed. Try running"
+			echo "	$(tput setaf 1)$ diff $t/exp_output.html output.html$(tput setaf 7)"
 			NOT_PASSED=$((NOT_PASSED + 1))
 		fi
 	fi
