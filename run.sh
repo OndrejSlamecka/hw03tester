@@ -30,5 +30,5 @@ for t in tests/* ; do
 	fi
 done
 
-echo "--- Whole test suit ended. $NOT_PASSED failed. ---"
+echo "--- All tests ended. $NOT_PASSED failed. ---"
 rm main.c
