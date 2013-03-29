@@ -2,3 +2,5 @@ domtree.*
 html.*
 hw03
 *_output.html
+!exp_output.html
+
