@@ -1,13 +1,12 @@
 #!/bin/bash
 
 # Copy user's code here
-if [[ $1 == "-c" ]]; then
-	echo "Copying header and source files for domtree and html"
-	cp ../domtree.h ./
-	cp ../domtree.c ./
-	cp ../html.h ./
-	cp ../html.c ./
-fi
+echo "Copying header and source files for domtree and html"
+cp ../domtree.h ./
+cp ../domtree.c ./
+cp ../html.h ./
+cp ../html.c ./
+
 
 
 # Go trough all tests:
