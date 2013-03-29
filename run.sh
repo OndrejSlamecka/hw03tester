@@ -29,5 +29,9 @@ for t in tests/* ; do
 done
 
 echo "--- Whole test suit ended. $NOT_PASSED failed. ---"
-rm output.html
+
+ZERO=0
+if [[ $NOT_PASSED -eq $ZERO ]]; then
+	rm output.html
+fi
 rm main.c
