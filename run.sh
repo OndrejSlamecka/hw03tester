@@ -8,7 +8,7 @@ cp ../html.h ./
 cp ../html.c ./
 
 
-# Go trough all tests:
+# Go through all tests:
 NOT_PASSED=0
 for t in tests/* ; do
 	if [ -d "$t" ]; then
