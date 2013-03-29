@@ -1,5 +1,7 @@
 This is something for university course I am taking, not interesting for anyone outside. Sorry.
 
+**Developed and tested under Linux. You may need cygwin or similar under Windows.**
+
 Install
 =======
 
