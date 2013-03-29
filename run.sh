@@ -8,7 +8,6 @@ cp ../html.h ./
 cp ../html.c ./
 
 
-
 # Go trough all tests:
 NOT_PASSED=0
 for t in tests/* ; do
@@ -17,22 +16,19 @@ for t in tests/* ; do
 	
 		cat $t/main.c > main.c
 		gcc -std=c99 -Wall -Wextra -Werror domtree.h domtree.c html.h html.c main.c -o hw03
-		./hw03 < $t/input.html > output.html
-		DIFF=$(diff $t/exp_output.html output.html)
+		output=$(basename $t)_output.html
+		./hw03 < $t/input.html > $output
+		DIFF=$(diff $t/exp_output.html $output)
 		if [ "$DIFF" == "" ]; then
 			echo "Test passed"
+			rm $output
 		else
 			echo "Test $(basename $t) failed. Try running"
-			echo "	$(tput setaf 1)$ diff $t/exp_output.html output.html$(tput setaf 7)"
+			echo "	$(tput setaf 1)$ diff $t/exp_output.html $output$(tput setaf 7)"
 			NOT_PASSED=$((NOT_PASSED + 1))
 		fi
 	fi
 done
 
 echo "--- Whole test suit ended. $NOT_PASSED failed. ---"
-
-ZERO=0
-if [[ $NOT_PASSED -eq $ZERO ]]; then
-	rm output.html
-fi
 rm main.c
