@@ -25,20 +25,20 @@ for t in tests/* ; do
 		diff=$(diff $t/exp_output.html $output)
 
 		if [ "$diff" == "" ]; then
-			echo "Output comparison test passed"
+			echo "  Output comparison test passed"
 			rm $output
 		else
-			echo "Test $(basename $t) failed. Try running"
-			echo "	$ $(tput setaf 1)diff $t/exp_output.html $output$(tput setaf 7)"
+			echo "  Test $(basename $t) failed. Try running"
+			echo "    $ $(tput setaf 1)diff $t/exp_output.html $output$(tput setaf 7)"
 			DIFF_NOT_PASSED=$((DIFF_NOT_PASSED + 1))
 		fi
 
 		if [ "$valgrind" == "" ]; then
-			echo "Valgrind test passed"
+			echo "  Valgrind test passed"
 			rm $binary
 		else
-			echo "Valgrind test failed. Try running"
-			echo "	$ $(tput setaf 1)valgrind $binary < $t/input.html$(tput setaf 7)"
+			echo "  Valgrind test failed. Try running"
+			echo "    $ $(tput setaf 1)valgrind $binary < $t/input.html$(tput setaf 7)"
 			VALGRIND_NOT_PASSED=$((VALGRIND_NOT_PASSED + 1))
 		fi
 	fi
