@@ -19,4 +19,8 @@ Move to the directory with your source code and then:
 	$ cd hw03tester
 	$ bash run.sh
 
+Update
+======
+
+	$ git pull origin master
 
