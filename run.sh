@@ -14,14 +14,14 @@ VALGRIND_NOT_PASSED=0
 for t in tests/* ; do
 	if [ -d "$t" ]; then
 		echo "-- Starting test $(basename $t) --"
-	
+
 		binary=./hw03_$(basename $t)
-        output=$(basename $t)_output.html
+		output=$(basename $t)_output.html
 
 		cat $t/main.c > main.c
 		gcc -std=c99 -Wall -Wextra -Werror domtree.h domtree.c html.h html.c main.c -o $binary
 
-        valgrind=$( { valgrind --leak-check=full -q $binary < $t/input.html > $output; } 2>&1 )
+		valgrind=$( { valgrind --leak-check=full -q $binary < $t/input.html > $output; } 2>&1 )
 		diff=$(diff $t/exp_output.html $output)
 
 		if [ "$diff" == "" ]; then
