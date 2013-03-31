@@ -9,7 +9,8 @@ int main(void)
  
 	element *clone2 = cloneNode(html->lastChild->firstChild, true);
 	appendChild(html->lastChild, clone2);
- 
+
+	removeChild(clone, clone->lastChild); 
 	deleteElement(clone->lastChild);
  
 	printDocument(html);
