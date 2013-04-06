@@ -4,7 +4,7 @@ int main(void)
 {
 	element* html = readDocument();
 
-	element *node = createElement("test", "");
+	element *node = createElement("test", NULL);
 	element *nodeChild = createElement("p", "Random text");
 	appendChild(node, nodeChild);
 
