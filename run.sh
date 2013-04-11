@@ -15,5 +15,5 @@ if [ "$result" == "" ]; then
 	bash integration.sh
 else
 	echo $result
-    echo "  Unit tests failed. Skipping integration tests"
+	echo "  Unit tests failed. Skipping integration tests"
 fi
