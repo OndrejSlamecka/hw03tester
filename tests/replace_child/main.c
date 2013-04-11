@@ -4,13 +4,34 @@ int main(void)
 {
 	element* html = readDocument();
 
-	element *node = createElement("test", NULL);
-	element *nodeChild = createElement("p", "Random text");
+	element *dummy1 = html->lastChild->firstChild;
+	element *node, *nodeChild, *replaced;
+
+	/**/
+	node = createElement("replace1", NULL);
+	nodeChild = createElement("b", "Text1");
 	appendChild(node, nodeChild);
 
-	element *replaced = replaceChild(html->lastChild, node, html->lastChild->firstChild);
+	replaced = replaceChild(html->lastChild, node, dummy1);
+	deleteElement(dummy1);
 
-	appendChild(html->firstChild, replaced);
+	/**/
+	node = createElement("replace2", NULL);
+	nodeChild = createElement("b", "Text2");
+	appendChild(node, nodeChild);
+
+	replaced = replaceChild(html->lastChild, node, html->lastChild->firstChild->nextSibling);
+	deleteElement(replaced);
+
+	/**/
+	node = createElement("replace3", NULL);
+	nodeChild = createElement("b", "Text3");
+	appendChild(node, nodeChild);
+
+	replaced = replaceChild(html->lastChild, node, html->lastChild->lastChild);
+	deleteElement(replaced);
+
+
 
 	printDocument(html);
 	deleteElement(html);
