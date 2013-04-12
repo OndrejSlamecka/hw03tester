@@ -72,6 +72,17 @@ int main(void)
 	removeChild(r2->parentNode, r2);
 	assert("Remove child - body is empty", html->lastChild->firstChild == NULL && html->lastChild->lastChild == NULL);
 
+	appendChild(html->lastChild, r1);
+	appendChild(html->lastChild, r2);
+	appendChild(html->lastChild, r3);
+
+	removeChild(r2->parentNode, r2);
+	assert("Remove the middle child - relation between first and last",
+			html->lastChild->firstChild->nextSibling == html->lastChild->lastChild &&
+			html->lastChild->firstChild == html->lastChild->lastChild->previousSibling);
+
+	removeChild(html->lastChild, r1);
+	removeChild(html->lastChild, r3);
 
 	// insertBefore
 	appendChild(html->lastChild, r3);
@@ -93,6 +104,9 @@ int main(void)
 	appendChild(t1, t2);
 	appendChild(r2, t3);
 
+	element *c0 = cloneNode(t2, false);
+	insertBefore(r2, c0, t3);
+
 	element *c1 = cloneNode(r2, true);
 	element *c2 = cloneNode(r2, false);
 	appendChild(html->lastChild, c1);
@@ -107,10 +121,11 @@ int main(void)
 			&& html->lastChild->firstChild->nextSibling->lastChild != NULL); // html body r2 t3
 
 	deleteElement(r1);
-	deleteElement(r2);
+	//deleteElement(r2);
 	deleteElement(r3);
 
 	deleteElement(html);
 
 	return 0;
 }
+
