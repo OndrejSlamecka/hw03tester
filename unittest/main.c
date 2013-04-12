@@ -94,6 +94,7 @@ int main(void)
 
 	insertBefore(html->lastChild, r1, r3);
 	assert("insertBefore - siblings", r1->previousSibling == r2 && r1->nextSibling == r3);
+	assert("insertBefore - previousSibling->nextSibling == added element", r2->nextSibling == r1);
 
 	removeChild(html->lastChild, r1);
 	removeChild(html->lastChild, r2);
