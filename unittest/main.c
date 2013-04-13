@@ -122,7 +122,7 @@ int main(void)
 			&& html->lastChild->firstChild->nextSibling->lastChild != NULL); // html body r2 t3
 
 	deleteElement(r1);
-	//deleteElement(r2);
+	deleteElement(r2);
 	deleteElement(r3);
 
 	deleteElement(html);
